@@ -25,7 +25,7 @@
   </head>
   <body>
     <h3 style="margin-left: 35%; margin-top: 5%">
-      Turn at least 5 tiles,without triggering bomb to win the game, good luck.
+      Turn at least 4 tiles,without triggering bomb to win the game, good luck.
     </h3>
     <div class="position">
       <table class="">
@@ -60,12 +60,9 @@
   <script>
     var bombIndex = [1, 2, 3].map((id) => Math.floor(Math.random() * 9));
     var checkedIndex = [];
-    console.log(bombIndex);
-    var checkedCount = 0;
 
     function reload(timeout) {
-      if (timeout) setTimeout(location.reload(), 5000);
-      setTimeout(location.reload(), 5000);
+      location.reload();
     }
     function reloadMsg() {
       var cells = document.getElementsByClassName("cell");
@@ -74,7 +71,7 @@
           alert("You already lost the game, reload to continue.");
           return false;
         }
-        if (checkedCount === 5) {
+        if (checkedIndex.length === 4) {
           alert("You already won the game, reload to continue.");
           return false;
         }
@@ -97,10 +94,9 @@
         selectedCell.style.backgroundColor = "green";
       }
 
-      checkedCount++;
       if (found) {
         alert("You lost the game :(");
-      } else if (checkedCount === 5) {
+      } else if (checkedIndex.length === 4) {
         alert("You won the game :)");
       }
     }
