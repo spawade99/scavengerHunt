@@ -68,11 +68,13 @@
       var cells = document.getElementsByClassName("cell");
       for (var i = 0; i < cells.length; i++) {
         if (cells[i].style.backgroundColor === "red") {
-          alert("You already lost the game, reload to continue.");
+          alert("You already lost the game, reloading for you.");
+          reload();
           return false;
         }
         if (checkedIndex.length === 4) {
-          alert("You already won the game, reload to continue.");
+          alert("You already won the game, reloading for you.");
+          reload();
           return false;
         }
       }
@@ -95,9 +97,9 @@
       }
 
       if (found) {
-        alert("You lost the game :(");
+        alert("Bomb found, you lost the game :(");
       } else if (checkedIndex.length === 4) {
-        alert("You won the game :)");
+        alert("Congratulations, you won the game :)");
       }
     }
   </script>
