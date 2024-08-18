@@ -17,8 +17,8 @@
         background-color: lightblue;
       }
       .position {
-        margin-left: 50%;
-        margin-top: 20%;
+        margin-left: 40%;
+        margin-top: 10%;
         text-align: center;
       }
     </style>
@@ -54,8 +54,9 @@
     console.log(bombIndex);
     var checkedCount = 0;
 
-    function reload() {
-      location.reload();
+    function reload(timeout) {
+      if (timeout) setTimeout(location.reload(), 5000);
+      setTimeout(location.reload(), 5000);
     }
 
     function validate(cellIndex) {
@@ -71,12 +72,12 @@
       }
       if (found) {
         alert("You lost the game");
-        reload();
+        reload(true);
       }
       checkedCount++;
       if (checkedCount === 6) {
         alert("You won the game");
-        reload();
+        reload(true);
       }
     }
   </script>
