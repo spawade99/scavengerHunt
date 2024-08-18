@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treasure Hunt</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      .cell {
+        width: 5vw;
+        height: 10vh;
+        background-color: lightblue;
+      }
+      .position {
+        margin-left: 50%;
+        margin-top: 20%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="position">
+      <table class="">
+        <tr>
+          <td colspan="3">
+            <button style="width: 100%" onclick="reload()">Reload</button>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="cell" onclick="validate(0)"></td>
+          <td class="cell" onclick="validate(1)"></td>
+          <td class="cell" onclick="validate(2)"></td>
+        </tr>
+        <tr class="">
+          <td class="cell" onclick="validate(3)"></td>
+          <td class="cell" onclick="validate(4)"></td>
+          <td class="cell" onclick="validate(5)"></td>
+        </tr>
+        <tr class="">
+          <td class="cell" onclick="validate(6)"></td>
+          <td class="cell" onclick="validate(7)"></td>
+          <td class="cell" onclick="validate(8)"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    var bombIndex = [1, 2, 3].map((id) => Math.floor(Math.random() * 9));
+    console.log(bombIndex);
+    var checkedCount = 0;
+
+    function reload() {
+      location.reload();
+    }
+
+    function validate(cellIndex) {
+      var found = bombIndex.includes(cellIndex);
+      if (found) {
+        document.getElementsByClassName("cell")[
+          cellIndex
+        ].style.backgroundColor = "red";
+      } else {
+        document.getElementsByClassName("cell")[
+          cellIndex
+        ].style.backgroundColor = "green";
+      }
+      if (found) {
+        alert("You lost the game");
+        reload();
+      }
+      checkedCount++;
+      if (checkedCount === 6) {
+        alert("You won the game");
+        reload();
+      }
+    }
+  </script>
+</html>
